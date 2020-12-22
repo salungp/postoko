@@ -39,6 +39,7 @@
                     <small>Barang</small>
                     <div class="pull-right"><a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#largeModal"><span class="fa fa-plus"></span> Tambah Barang</a></div>
                 </h1>
+                <?php echo $this->session->flashdata('msg');?>
             </div>
         </div>
         <!-- /.row -->
@@ -50,6 +51,7 @@
                     <tr>
                         <th style="text-align:center;width:40px;">No</th>
                         <th>Kode Barang</th>
+                        <th>Foto Barang</th>
                         <th>Nama Barang</th>
                         <th>Satuan</th>
                         <th>Harga Pokok</th>
@@ -68,6 +70,7 @@
                         $no++;
                         $id=$a['barang_id'];
                         $nm=$a['barang_nama'];
+                        $fb=$a['barang_gambar'];
                         $satuan=$a['barang_satuan'];
                         $harpok=$a['barang_harpok'];
                         $harjul=$a['barang_harjul'];
@@ -80,6 +83,7 @@
                     <tr>
                         <td style="text-align:center;"><?php echo $no;?></td>
                         <td><?php echo $id;?></td>
+                        <td><?php echo $fb; ?></td>
                         <td><?php echo $nm;?></td>
                         <td style="text-align:center;"><?php echo $satuan;?></td>
                         <td style="text-align:right;"><?php echo 'Rp '.number_format($harpok);?></td>
@@ -107,7 +111,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" id="myModalLabel">Tambah Barang</h3>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/barang/tambah_barang'?>">
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/barang/tambah_barang'?>" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     <!--<div class="form-group">
@@ -121,6 +125,13 @@
                         <label class="control-label col-xs-3" >Nama Barang</label>
                         <div class="col-xs-9">
                             <input name="nabar" class="form-control" type="text" placeholder="Nama Barang..." style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Foto Barang</label>
+                        <div class="col-xs-9">
+                            <input name="fobar" class="form-control" type="file" placeholder="Foto Barang..." style="width:335px;" required>
                         </div>
                     </div>
 
@@ -243,7 +254,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h3 class="modal-title" id="myModalLabel">Edit Barang</h3>
                     </div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/barang/edit_barang'?>">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url().'admin/barang/edit_barang'?>" enctype="multipart/form-data">
                         <div class="modal-body">
 
                         <div class="form-group">
@@ -257,6 +268,13 @@
                             <label class="control-label col-xs-3" >Nama Barang</label>
                             <div class="col-xs-9">
                                 <input name="nabar" class="form-control" type="text" value="<?php echo $nm;?>" placeholder="Nama Barang..." style="width:335px;" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" >Foto Barang</label>
+                            <div class="col-xs-9">
+                                <input name="fobar" class="form-control" type="file" value="<?php echo $nm;?>" placeholder="Foto Barang..." style="width:335px;" required>
                             </div>
                         </div>
 
