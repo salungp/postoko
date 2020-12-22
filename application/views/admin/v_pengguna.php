@@ -66,7 +66,6 @@
                         $id=$a['user_id'];
                         $nm=$a['user_nama'];
                         $username=$a['user_username'];
-                        $password=$a['user_password'];
                         $level=$a['user_level'];
                         $status=$a['user_status'];
                 ?>
@@ -74,7 +73,7 @@
                         <td style="text-align:center;"><?php echo $no;?></td>
                         <td><?php echo $nm;?></td>
                         <td><?php echo $username;?></td>
-                        <td><?php echo $password;?></td>
+                        <td>Password Disembunyikan.</td>
                         <td><?php echo $level;?></td>
                         <td><?php echo $status;?></td>
                         <td style="text-align:center;">
