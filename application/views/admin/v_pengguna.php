@@ -35,11 +35,11 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-            <center><?php echo $this->session->flashdata('msg');?></center>
                 <h1 class="page-header">Data
                     <small>Pengguna</small>
                     <div class="pull-right"><a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#largeModal"><span class="fa fa-plus"></span> Tambah Pengguna</a></div>
                 </h1>
+                <?php echo $this->session->flashdata('msg');?>
             </div>
         </div>
         <!-- /.row -->
@@ -75,7 +75,7 @@
                         <td><?php echo $username;?></td>
                         <td>Password Disembunyikan.</td>
                         <td><?php echo $level;?></td>
-                        <td><?php echo $status;?></td>
+                        <td><?php echo $status == 1 ? '<div class="label label-success">active</div>' : '</div class="label label-light">Nonactive</div>';?></td>
                         <td style="text-align:center;">
                             <a class="btn btn-xs btn-warning" href="#modalEditPelanggan<?php echo $id?>" data-toggle="modal" title="Edit"><span class="fa fa-edit"></span> Edit</a>
                             <a class="btn btn-xs btn-danger" href="#modalHapusPelanggan<?php echo $id?>" data-toggle="modal" title="Hapus"><span class="fa fa-close"></span> Nonaktifkan</a>

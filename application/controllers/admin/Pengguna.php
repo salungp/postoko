@@ -25,16 +25,16 @@ class Pengguna extends CI_Controller{
 		$password2=$this->input->post('password2');
 		$level=$this->input->post('level');
 		if ($password2 <> $password) {
-			echo $this->session->set_flashdata('msg','<label class="label label-danger">Password yang Anda Masukan Tidak Sama</label>');
+			echo $this->session->set_flashdata('msg','<div class="alert alert-danger">Password yang Anda Masukan Tidak Sama</div>');
 			redirect('admin/pengguna');
 		}else{
 			$this->m_pengguna->simpan_pengguna($nama,$username,$password,$level);
-			echo $this->session->set_flashdata('msg','<label class="label label-success">Pengguna Berhasil ditambahkan</label>');
+			echo $this->session->set_flashdata('msg','<div class="alert alert-success">Pengguna Berhasil ditambahkan</div>');
 			redirect('admin/pengguna');
 		}
 		
 	}else{
-        echo "Halaman tidak ditemukan";
+        show_404();
     }
 	}
 	function edit_pengguna(){
@@ -47,18 +47,18 @@ class Pengguna extends CI_Controller{
 		$level=$this->input->post('level');
 		if (empty($password) && empty($password2)) {
 			$this->m_pengguna->update_pengguna_nopass($kode,$nama,$username,$level);
-			echo $this->session->set_flashdata('msg','<label class="label label-success">Pengguna Berhasil diupdate</label>');
+			echo $this->session->set_flashdata('msg','<div class="alert alert-success">Pengguna Berhasil diupdate</div>');
 			redirect('admin/pengguna');
 		}elseif ($password2 <> $password) {
-			echo $this->session->set_flashdata('msg','<label class="label label-danger">Password yang Anda Masukan Tidak Sama</label>');
+			echo $this->session->set_flashdata('msg','<div class="alert alert-danger">Password yang Anda Masukan Tidak Sama</div>');
 			redirect('admin/pengguna');
 		}else{
 			$this->m_pengguna->update_pengguna($kode,$nama,$username,$password,$level);
-			echo $this->session->set_flashdata('msg','<label class="label label-success">Pengguna Berhasil diupdate</label>');
+			echo $this->session->set_flashdata('msg','<div class="alert alert-success">Pengguna Berhasil diupdate</div>');
 			redirect('admin/pengguna');
 		}
 	}else{
-        echo "Halaman tidak ditemukan";
+        show_404();
     }
 	}
 	function nonaktifkan(){
@@ -67,7 +67,7 @@ class Pengguna extends CI_Controller{
 		$this->m_pengguna->update_status($kode);
 		redirect('admin/pengguna');
 	}else{
-        echo "Halaman tidak ditemukan";
+        show_404();
     }
 	}
 }
